@@ -266,7 +266,8 @@ def main():
     kps_sequence = None
     if args.kps_path != "":
         assert os.path.exists(args.kps_path), f'{args.kps_path} does not exist'
-        kps_sequence = torch.tensor(torch.load(args.kps_path))  # [len, 3, 2]
+        # kps_sequence = torch.tensor(torch.load(args.kps_path))  # [len, 3, 2]
+        kps_sequence = torch.tensor(torch.load(args.kps_path, weights_only=False))
         print(f'The original length of kps sequence is {kps_sequence.shape[0]}.')
 
         if kps_sequence.shape[0] > video_length:
